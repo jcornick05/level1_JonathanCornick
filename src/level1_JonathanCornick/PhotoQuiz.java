@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class PhotoQuiz {
 
 	public static void main(String[] args) throws Exception {
-int score = 0;
+                 int score = 0;
 		JFrame quizWindow = new JFrame();
 		quizWindow.setVisible(true);
 		quizWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,12 +35,12 @@ int score = 0;
 		// 7. print "CORRECT" if the user gave the right answer
        if (a.equalsIgnoreCase("Great White Shark")) {
     	   JOptionPane.showMessageDialog(null, "Correct");
-    	   score+=10;
+    	   score+=100;
 	}
 		// 8. print "INCORRECT" if the answer is wrong
        else {
 		JOptionPane.showMessageDialog(null, "Incorrect");
-		score-=10;
+		score-=100;
 	}
 		// 9. remove the component from the quiz window (you may not see the effect of
 		// this until step 12)
@@ -59,13 +59,20 @@ String j = JOptionPane.showInputDialog("Is the Collosal Squid real?");
 		// 14+ check answer, say if correct or incorrect, etc.
 if (j.equalsIgnoreCase("Yes")) {
 	   JOptionPane.showMessageDialog(null, "Correct");
-	   score+=10;
+	   score+=100;
 }
 else {
 	JOptionPane.showMessageDialog(null, "Incorrect");
-	score-=10;
+	score-=100;
 }
-System.out.println(score);
+JOptionPane.showMessageDialog(null, "º•º•YOU HAVE " + score + " POINTS•º•º");
+if (score<100) {
+	JOptionPane.showMessageDialog(null, "YOU SUCK!!!");
+
+	if (score>100)  {
+		JOptionPane.showMessageDialog(null, "YOU'RE PRETTY GOOD!!!");
+	}
+}
 	}
 
 	private static Component createImage(String imageUrl) throws MalformedURLException {
