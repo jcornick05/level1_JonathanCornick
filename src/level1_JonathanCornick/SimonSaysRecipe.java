@@ -34,10 +34,10 @@ public class SimonSaysRecipe extends KeyAdapter {
  // 4. call the method to show an image
 showImage();
  	}
+ 	int points = 0;
 	public void keyPressed(KeyEvent e) {
     	int keyCode = e.getKeyCode();
     	// 16. make a points variable to track the score. tell the user their score at the end.
-    	int points = 0;
     	//17. if the keyCode matches the imageIndex and "Simon says..."  increase their score
     	 if(imageIndex == keyCode && simonSays==1) {
     		points+=10;
@@ -49,6 +49,7 @@ showImage();
     		speak("You are correct");
     	} 	else {
     		speak("Incorrect");
+    		points-=5;
     	}
 
     	//19. Use the speak method to tell the user if they were correct or not
