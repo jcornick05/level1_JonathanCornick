@@ -31,7 +31,7 @@ import java.io.File;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 
 	private JPanel quizPanel;
 	int score = 0;
@@ -56,12 +56,12 @@ public class Jeopardy implements ActionListener {
 		// 4. Add the header component to the quizPanel
 		quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
-		frame.add(panel);
+		frame.add(quizPanel);
 
 		// 6. Use the createButton method to set the value of firstButton
 		firstButton = createButton("$200");
 		// 7. Add the firstButton to the quizPanel
-		panel.add(firstButton);
+		quizPanel.add(firstButton);
 		// 8. Write the code inside the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 		// done
@@ -70,9 +70,19 @@ public class Jeopardy implements ActionListener {
 		secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		
+		thirdButton = createButton("$600");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		fifthButton = createButton("$1000");
+		quizPanel.add(fifthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
 		// 12. Fill in the actionPerformed() method below
 
 		frame.pack();
@@ -110,7 +120,7 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == firstButton) {
 			// Call the askQuestion() method
-			askQuestion("Did Boba Fett die in episode 6 of The Star Wars series.", "What is no", 200);
+			askQuestion("Who killed the Emperor", "What is Darth Vader", 200);
 			// Fill in the askQuestion() method. When you play the game, the score should
 			// change.
 		}
@@ -118,6 +128,15 @@ public class Jeopardy implements ActionListener {
 		if (buttonPressed == secondButton) {
 			// Call the askQuestion() method with a harder question
 			askQuestion("Who killed the droid bounty hunter IG-88", "What is Boba Fett", 400);
+		}
+		if(buttonPressed == thirdButton) {
+			askQuestion("Did Boba Fett die in episode 6 of Star Wars", "What is no", 600);
+		}
+		if (buttonPressed == fourthButton) {
+			askQuestion("Who is the leader of the crime syndicate Black Sun", "What is Prince Xizor", 800);
+		}
+		if (buttonPressed == fifthButton) {
+			askQuestion("What is the biggest Star Wars planet?", "What is Bespin", 1000);
 		}
 		// Clear the button text (set the button text to nothing)
 		buttonPressed.setText("");
