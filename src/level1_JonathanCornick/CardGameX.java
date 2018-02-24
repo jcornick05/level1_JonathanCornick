@@ -45,6 +45,8 @@ public class CardGameX implements ActionListener {
 		mainPanel.add(attackPanel,BorderLayout.SOUTH);
 		character = loadImageFromComputer("Player.png");
 		enemy = loadImageFromComputer("Enemy.png");
+		character2 = loadImageFromComputer("Player2.png");
+		enemy2 = loadImageFromComputer("Enemy2.png");
 		characterPanel.add(character);
 		enemyPanel.add(enemy);
 		characterPanel.add(a);
@@ -93,27 +95,26 @@ public class CardGameX implements ActionListener {
 				JOptionPane.showMessageDialog(null, "YOU BOTH DIED");
 				attackPanel.removeAll();
 				JOptionPane.showMessageDialog(null, "Play again??");
-				character2 = loadImageFromComputer("Player2.png");
-				enemy2 = loadImageFromComputer("Enemy2.png");
+				characterPanel.removeAll();
 				characterPanel.add(character2);
+				enemyPanel.removeAll();
 				enemyPanel.add(enemy2);
 	}
 		else if (characterHealth<=0) {
 			cHealth.setText("Game Over");
-			character = loadImageFromComputer("Player2.png");
+			
 			JOptionPane.showMessageDialog(null, "YOU DIED!!");
 			attackPanel.removeAll();
 			JOptionPane.showMessageDialog(null, "Play again??");
-			character2 = loadImageFromComputer("Player2.png");
+			characterPanel.removeAll();
 			characterPanel.add(character2);
 		}
 		else if (enemyHealth<=0) {
 		    eHealth.setText("Game Over");
-		    enemy = loadImageFromComputer("Enemy2.png");
 			JOptionPane.showMessageDialog(null, "YOU WON!!");
 			attackPanel.removeAll();
 			JOptionPane.showMessageDialog(null, "Play again??");
-			enemy2 = loadImageFromComputer("Enemy2.png");
+			enemyPanel.removeAll();
 			enemyPanel.add(enemy2);
 		}
 		
