@@ -26,11 +26,14 @@ public class CardGameX implements ActionListener {
 	JPanel enemyPanel = new JPanel();
 	JLabel character = new JLabel();
 	JLabel enemy = new JLabel();
+	JLabel character2 = new JLabel();
+	JLabel enemy2 = new JLabel();
 	JLabel a = new JLabel();
 	JLabel b = new JLabel();
 	JButton attack = new JButton();
     JLabel cHealth = new JLabel();
     JLabel eHealth = new JLabel();
+    int p = 0;
 	public void run() {
 		// TODO Auto-generated method stub
 		mainPanel.setLayout(new BorderLayout(5,5));
@@ -48,7 +51,7 @@ public class CardGameX implements ActionListener {
 		enemyPanel.add(b);
 		attackPanel.add(attack);
 		frame.setVisible(true);
-		frame.setTitle("Hyeped Beasts");
+		frame.setTitle("Fallout Card Game");
 		attack.setText("ATTACK!!!");
 	    cHealth.setText("HP: " + characterHealth );
 	    eHealth.setText("HP: " + enemyHealth );
@@ -74,26 +77,46 @@ public class CardGameX implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		int cAttack = new Random().nextInt(25);
+		int cAttack = new Random().nextInt(10);
 		cAttack+=10;
-		int eAttack = new Random().nextInt(25);
+		int eAttack = new Random().nextInt(10);
 		eAttack+=10;
 		enemyHealth-=cAttack;
 		characterHealth-=eAttack;
 		cHealth.setText("HP: " + characterHealth);
 		eHealth.setText("HP: " + enemyHealth);
-		if (characterHealth<0) {
-			JOptionPane.showMessageDialog(null, "YOU DIED!!");
-		}
-		if (enemyHealth<0) {
-			JOptionPane.showMessageDialog(null, "YOU WON!!");
-		}
-		if (characterHealth==0 && enemyHealth==0) {
-		if (characterHealth>enemyHealth) {
-	         JOptionPane.showMessageDialog(null, "YOU WON!!");
-			}else {
-				JOptionPane.showMessageDialog(null, "YOU DIED");
-		}
+		if (characterHealth<=0 && enemyHealth<=0) {
+			cHealth.setText("Game Over");
+			eHealth.setText("Game Over");
+			cHealth.setText(""+p);
+			eHealth.setText(""+p);
+				JOptionPane.showMessageDialog(null, "YOU BOTH DIED");
+				attackPanel.removeAll();
+				JOptionPane.showMessageDialog(null, "Play again??");
+				character2 = loadImageFromComputer("Player2.png");
+				enemy2 = loadImageFromComputer("Enemy2.png");
+				characterPanel.add(character2);
+				enemyPanel.add(enemy2);
 	}
+		else if (characterHealth<=0) {
+			cHealth.setText("Game Over");
+			character = loadImageFromComputer("Player2.png");
+			JOptionPane.showMessageDialog(null, "YOU DIED!!");
+			attackPanel.removeAll();
+			JOptionPane.showMessageDialog(null, "Play again??");
+			character2 = loadImageFromComputer("Player2.png");
+			characterPanel.add(character2);
+		}
+		else if (enemyHealth<=0) {
+		    eHealth.setText("Game Over");
+		    enemy = loadImageFromComputer("Enemy2.png");
+			JOptionPane.showMessageDialog(null, "YOU WON!!");
+			attackPanel.removeAll();
+			JOptionPane.showMessageDialog(null, "Play again??");
+			enemy2 = loadImageFromComputer("Enemy2.png");
+			enemyPanel.add(enemy2);
+		}
+		
+		
 }
 }
