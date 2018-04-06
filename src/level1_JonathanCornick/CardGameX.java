@@ -115,7 +115,7 @@ public class CardGameX implements ActionListener {
 			attackPanel.removeAll();
 			JOptionPane.showMessageDialog(null, "Play again??");
 			enemyPanel.removeAll();
-			enemyPanel.add(enemy2);
+		
 		}
 		
 		
