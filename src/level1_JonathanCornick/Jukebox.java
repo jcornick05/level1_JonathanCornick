@@ -1,4 +1,6 @@
 package level1_JonathanCornick;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 // Copyright The League of Amazing Programmers, 2015
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,7 +10,9 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.decoder.JavaLayerException;
@@ -17,19 +21,37 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
-
+public class Jukebox implements Runnable, MouseListener {
+	 JFrame frame = new JFrame();
+	 JPanel panel = new JPanel();
+	 JLabel Song0 = new JLabel("LABEL1");
+	 JLabel Song1 = new JLabel("LABEL2");
+	  Song s = new Song("Song0.mp3");
+	  Song o = new Song("Song1.mp3");
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
+
+		
 	}
 
            public void run() {
-
+        	   frame.add(panel);
+        	   Song0 = loadImage("Song0.jpeg");
+        	   Song1 = loadImage("Song1.jpg");
+       		panel.add(Song0);
+       		panel.add(Song1);
+       		frame.pack();
+       		frame.setVisible(true);
+       		Song0.addMouseListener(this);
+       		Song1.addMouseListener(this);
+       		
+       		
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-       Song s = new Song("song.mp3");
+     
 		// 5. Play the Song
-s.play();
+ 
+
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -37,12 +59,54 @@ s.play();
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
 		 */
+
+
           }
 	/* Use this method to add album covers to your Panel. */
 	private JLabel loadImage(String fileName) {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		JLabel labelpressed = (JLabel) e.getSource();
+		if (labelpressed==Song0) {
+		o.stop();
+		s.stop();
+		s.play();
+		}
+        if (labelpressed==Song1) {
+			s.stop();
+			o.stop();
+			o.play();
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
@@ -53,7 +117,7 @@ class Song {
 	private String songAddress;
 	private AdvancedPlayer mp3Player;
 	private InputStream songStream;
-                 
+               
 	/**
 	 * Songs can be constructed from files on your computer or Internet
 	 * addresses.
@@ -65,6 +129,7 @@ class Song {
 	 * </code>
 	 */
 	public Song(String songAddress) {
+		
 		this.songAddress = songAddress;
 	}
 
