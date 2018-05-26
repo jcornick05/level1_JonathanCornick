@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/level1_JonathanCornick/Tortoise.jar"/>
 	<classpathentry kind="lib" path="src/level1_JonathanCornick/javazoom (1).jar"/>
+	<classpathentry kind="lib" path="src/level1_JonathanCornick/gridworld.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
